@@ -1,14 +1,18 @@
-//REMEMBER: do not forget {} line 3
+//REMEMBER: do not forget {} for the props.
 
 const Card = ({ username, email }) => {
   return (
     <>
-      <span>{username}</span>
+      <li className="container p-0 ">
+        <div className="row  align-items-center">
+          <div className="col-3">{username}</div>
 
-      <span>{email}</span>
+          <div className="col-4">{email}</div>
 
-      <button>Edit</button>
-      <button>Delete</button>
+          <button className="col-2 m-1">Edit</button>
+          <button className="col-2 m-1">Delete</button>
+        </div>
+      </li>
     </>
   );
 };

@@ -1,56 +1,22 @@
 import { useState } from "react";
 import { Card } from "./Card";
 
-const Box = () => {
-  const [error, setError] = useState(null);
-  const [list, setList] = useState([]);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  const fetchHandler = async () => {
-    //AGGIUNGERE IS LOADING
-
-    try {
-      const response = await fetch(
-        "https://905a6ba0-55f9-41ae-bf28-69396d483ab3.mock.pstmn.io/form"
-      );
-      if (!response.ok)
-        throw new Error("Something went wrong! Probably wrong URL!");
-      console.log(response);
-
-      const data = await response.json();
-      console.log(data);
-
-      const transformedData = data.list.map((elem, index) => {
-        return {
-          username: elem.username,
-          email: elem.email,
-        };
-      });
-      setList(transformedData);
-      console.log(transformedData);
-
-      console.log(list);
-      setButtonDisabled(true);
-    } catch (error) {
-      setError(error.message);
-      console.log(error);
-    }
-  };
-
-  let final = list;
-
+const Box = ({ contacts }) => {
   return (
-    <section>
-      <h2>Username</h2>
-      <h2>Email</h2>
+    <section className="container mt-5 border border-2 border-dark">
+      <div className="row">
+        <div className="col-3 mb-1">Username</div>
+        <div className="col-3 mn-1">Email</div>
+        <ul className="list-unstyled w-100 border-top border-2 border-dark">
+          {contacts.map((elem, index) => {
+            //GIULIA
 
-      <button onClick={fetchHandler} disabled={buttonDisabled}>
-        Show Contacts
-      </button>
-
-      {fakeList.list.map((elem, index) => {
-        return <Card key={index} username={elem.username} email={elem.email} />;
-      })}
+            return (
+              <Card key={index} username={elem.username} email={elem.email} />
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 };
@@ -62,6 +28,7 @@ const Box = () => {
           </section>*/
 }
 
+/*
 const fakeList = {
   list: [
     {
@@ -74,5 +41,6 @@ const fakeList = {
     },
   ],
 };
+*/
 
 export { Box };
