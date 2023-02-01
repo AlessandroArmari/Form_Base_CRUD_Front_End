@@ -15,7 +15,7 @@ function App() {
   const fetchHandler = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/contacts/all");
+      const response = await fetch("http://localhost:8080/contacts/all"); //PostMan: Get All!
       if (!response.ok)
         throw new Error("Something went wrong! Probably wrong URL!");
       console.log(response);

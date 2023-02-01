@@ -8,6 +8,7 @@ const Form = () => {
 
   const [errorUsernameBorder, setErrorUsernameBorder] = useState(false);
   const [errorEmailBorder, setErrorEmailBorder] = useState(false);
+  const [error, setError] = useState(null);
   const usernameIsValid = usernameValue.trim() !== "";
   const emailIsValid = emailValue.trim() !== "";
   //--->if username and email input field is empty
@@ -33,10 +34,31 @@ const Form = () => {
       setErrorEmailBorder(true);
       return;
     }
-
-    //FETCH QUI!
-
     console.log("You've entered this email: " + emailValue);
+
+    //POST-FETCH-ZONE
+    //Now WE send an input data to My SQL/Back End
+    const myNewContact = { username: usernameValue, email: emailValue };
+    //HERE WE CREATED AN OBJECT USING BOTH INPUT VALUES!
+    console.log(myNewContact);
+
+    //Because we need an URL and a "Body" to send, fetch() will have more than one parameters!
+
+    fetch("http://localhost:8080/contacts/create", {
+      method: "POST", //--->when doing GET, we do not nned to type method! Here we have to!
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(myNewContact), //---> converts a JavaScript value to a JSON string
+    })
+      .then((response) => response.json()) //--->fetch returns a Promise<response> that can be handled by .then()
+      .then((myNewContact) => {
+        console.log("Success, you've sent this object ", myNewContact);
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error);
+      });
   };
   //2
   const usernameInputChangeHandler = (event) => {
