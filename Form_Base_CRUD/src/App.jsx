@@ -63,7 +63,8 @@ function App() {
         <div className="row mt-4 ">
           {/*this 2 classNames "activates" bootstrap grid System 
           The col width is in Form and in Box*/}
-          <Form />
+          {/* Trying to pass this "fetchHandler" to <Form/> */}
+          <Form functionToBePassedToChild={fetchHandler} />
           {/*1--->onClik Button*/}
           {!buttonDisabled && (
             <button onClick={fetchHandler} className="mt-4 ml-3">

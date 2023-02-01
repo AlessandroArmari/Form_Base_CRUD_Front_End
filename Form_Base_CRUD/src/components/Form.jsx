@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-const Form = () => {
+//Form has a props--->functionToBePassedToChild--->it will be "filled" in App.jsx
+const Form = ({ functionToBePassedToChild }) => {
   const [usernameValue, setUsernameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [usernameIsInvalid, setUsernameIsInvalid] = useState(true);
   const [emailIsInvalid, setEmailIsInvalid] = useState(true);
+  const [newContactArrived, setNewContactArrived] = useState(false);
 
   const [errorUsernameBorder, setErrorUsernameBorder] = useState(false);
   const [errorEmailBorder, setErrorEmailBorder] = useState(false);
@@ -60,8 +62,14 @@ const Form = () => {
         console.log(error);
       });
 
-    fetchHandler;
+    setNewContactArrived(true); //--->I set this boolean to true, now to down to if()
   };
+
+  if (newContactArrived == true) {
+    functionToBePassedToChild(); //--->Here I use the props which activate the function fetchHandler()
+    setNewContactArrived(false);
+  }
+
   //2
   const usernameInputChangeHandler = (event) => {
     setUsernameValue(event.target.value); //---> il valore dell'elemento dove si trova l'evento (onChange)
