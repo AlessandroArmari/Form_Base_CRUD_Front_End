@@ -33,6 +33,9 @@ const Form = () => {
       setErrorEmailBorder(true);
       return;
     }
+
+    //FETCH QUI!
+
     console.log("You've entered this email: " + emailValue);
   };
   //2

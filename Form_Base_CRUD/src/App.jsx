@@ -81,7 +81,7 @@ function App() {
     </>
   );
 }
-// Mock Server Get All: https://905a6ba0-55f9-41ae-bf28-69396d483ab3.mock.pstmn.io/form
+
 // POSTMAN Get All: http://localhost:8080/contacts/all
 
 /*Remember: The JSON list of objects, can be an object itself with a property
