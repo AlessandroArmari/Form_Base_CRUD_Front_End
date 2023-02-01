@@ -40,7 +40,7 @@ function App() {
     setIsLoading(false);
   };
 
-  let content = <p>Empty</p>;
+  let content = <p></p>;
 
   if (isLoading) {
     content = <p>Loading...</p>;

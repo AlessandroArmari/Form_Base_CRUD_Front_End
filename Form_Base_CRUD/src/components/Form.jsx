@@ -59,6 +59,8 @@ const Form = () => {
         setError(error.message);
         console.log(error);
       });
+
+    fetchHandler;
   };
   //2
   const usernameInputChangeHandler = (event) => {
