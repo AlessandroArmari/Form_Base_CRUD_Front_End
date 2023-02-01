@@ -8,11 +8,10 @@ const Box = ({ contacts }) => {
         <div className="col-3 mb-1">Username</div>
         <div className="col-3 mn-1">Email</div>
         <ul className="list-unstyled w-100 border-top border-2 border-dark">
+          {/* 5  use .map() on "contacts" (which is listOfContacts) */}
           {contacts.map((elem, index) => {
-            //GIULIA
-
             return (
-              <Card key={index} username={elem.username} email={elem.email} />
+              <Card key={index} username={elem.username} email={elem.email} /> // 6  go to Card
             );
           })}
         </ul>

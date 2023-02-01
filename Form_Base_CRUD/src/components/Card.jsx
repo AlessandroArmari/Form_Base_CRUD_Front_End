@@ -6,7 +6,7 @@ const Card = ({ username, email }) => {
       <li className="container p-0 ">
         <div className="row  align-items-center">
           <div className="col-3">{username}</div>
-
+          {/* 7 this props are filled with contents */}
           <div className="col-4">{email}</div>
 
           <button className="col-2 m-1">Edit</button>
