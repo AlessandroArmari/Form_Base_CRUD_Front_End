@@ -2,24 +2,45 @@ import { useState } from "react";
 
 const Form = () => {
   const [usernameValue, setUsernameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
   const [usernameIsInvalid, setUsernameIsInvalid] = useState(true);
-  const [errorBorder, setErrorBorder] = useState(false);
+  const [emailIsInvalid, setEmailIsInvalid] = useState(true);
+
+  const [errorUsernameBorder, setErrorUsernameBorder] = useState(false);
+  const [errorEmailBorder, setErrorEmailBorder] = useState(false);
   const usernameIsValid = usernameValue.trim() !== "";
-  //--->if username input field is empty
+  const emailIsValid = emailValue.trim() !== "";
+  //--->if username and email input field is empty
 
   //4
   const formSubmissionHandler = (event) => {
     event.preventDefault();
-    if (!usernameIsValid) {
-      console.log("Username must not be empty!");
-      setErrorBorder(true);
+
+    if (!usernameIsValid && !emailIsValid) {
+      setErrorUsernameBorder(true);
+      setErrorEmailBorder(true);
+      console.log("Username and Email must not be empty!");
       return;
     }
-    console.log("You've entered " + usernameValue);
+    if (!usernameIsValid) {
+      console.log("Username must not be empty!");
+      setErrorUsernameBorder(true);
+      return;
+    }
+    console.log("You've entered this username: " + usernameValue);
+    if (!emailIsValid) {
+      console.log("Email must not be empty!");
+      setErrorEmailBorder(true);
+      return;
+    }
+    console.log("You've entered this email: " + emailValue);
   };
   //2
   const usernameInputChangeHandler = (event) => {
     setUsernameValue(event.target.value); //---> il valore dell'elemento dove si trova l'evento (onChange)
+  };
+  const emailInputChangeHandler = (event) => {
+    setEmailValue(event.target.value);
   };
 
   //this first "col-4" is the "prosecution" of a bootstrap grid-system!
@@ -42,7 +63,7 @@ const Form = () => {
           onChange={usernameInputChangeHandler}
           id="username"
           className={
-            errorBorder
+            errorUsernameBorder
               ? "w-100 border border-2 border-danger rounded"
               : "w-100"
           }
@@ -50,7 +71,17 @@ const Form = () => {
         <label htmlFor="email" className="m-2">
           Email:
         </label>
-        <input type="text" id="email" className="w-100" />
+        <input
+          type="text"
+          value={emailValue}
+          onChange={emailInputChangeHandler}
+          id="email"
+          className={
+            errorEmailBorder
+              ? "w-100 border border-2 border-danger rounded"
+              : "w-100"
+          }
+        />
         <div className="mt-3">
           <button>Send</button>
         </div>
