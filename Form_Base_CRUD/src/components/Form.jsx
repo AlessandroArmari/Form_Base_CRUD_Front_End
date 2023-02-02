@@ -56,7 +56,7 @@ const Form = ({ functionToBePassedToChild }) => {
       .then((response) => response.json()) //--->fetch returns a Promise<response> that can be handled by .then()
       .then((myNewContact) => {
         console.log("Success, you've sent this object ", myNewContact);
-        functionToBePassedToChild(); //after .then()--->I'm sure this will be worked at the end!
+        functionToBePassedToChild(); //after .then()--->I'm sure this will be worked at the end! ---> I recall the function originally stored in App.jsx
       })
       .catch((error) => {
         setError(error.message);
