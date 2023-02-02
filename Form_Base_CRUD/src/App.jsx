@@ -9,9 +9,7 @@ function App() {
   const [listOfContacts, setListOfContacts] = useState([]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  {
-    /*2--->async Function*/
-  }
+  /*2--->async Function*/
   const fetchHandler = async () => {
     setIsLoading(true);
     try {
@@ -59,15 +57,18 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <div className="row mt-4 ">
+      <div className="">
+        <div className=" m-2 ">
           {/*this 2 classNames "activates" bootstrap grid System 
           The col width is in Form and in Box*/}
-          {/* Trying to pass this "fetchHandler" to <Form/> */}
+          {/* Passing this "fetchHandler" to <Form/> as a props. */}
           <Form functionToBePassedToChild={fetchHandler} />
           {/*1--->onClik Button*/}
           {!buttonDisabled && (
-            <button onClick={fetchHandler} className="mt-4 ml-3">
+            <button
+              onClick={fetchHandler}
+              className="mt-5 ml-3 btn btn-primary"
+            >
               Show Contacts
             </button>
           )}
@@ -85,6 +86,6 @@ function App() {
 
 // POSTMAN Get All: http://localhost:8080/contacts/all
 
-/*Remember: The JSON list of objects, can be an object itself with a property
+/*Remember: The JSON list of objects, can be an object itself with a property (wich has an array ob objects as value!)
 When you do .map() to check that*/
 export default App;

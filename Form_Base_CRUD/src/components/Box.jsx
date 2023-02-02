@@ -3,7 +3,7 @@ import { Card } from "./Card";
 
 const Box = ({ contacts }) => {
   return (
-    <section className="container mt-5 border border-2 border-dark">
+    <section className="container mt-5 border border-2 border-dark rounded">
       <div className="row">
         <div className="col-3 mb-1">Username</div>
         <div className="col-3 mn-1">Email</div>
