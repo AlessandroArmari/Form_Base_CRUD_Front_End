@@ -56,19 +56,13 @@ const Form = ({ functionToBePassedToChild }) => {
       .then((response) => response.json()) //--->fetch returns a Promise<response> that can be handled by .then()
       .then((myNewContact) => {
         console.log("Success, you've sent this object ", myNewContact);
+        functionToBePassedToChild(); //after .then()--->I'm sure this will be worked at the end!
       })
       .catch((error) => {
         setError(error.message);
         console.log(error);
       });
-
-    setNewContactArrived(true); //--->I set this boolean to true, now to down to if()
   };
-
-  if (newContactArrived == true) {
-    functionToBePassedToChild(); //--->Here I use the props which activate the function fetchHandler()
-    setNewContactArrived(false);
-  }
 
   //2
   const usernameInputChangeHandler = (event) => {
